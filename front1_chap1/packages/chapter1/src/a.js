@@ -34,6 +34,25 @@ function JuniorEngineer(health, intelligence) {
 // 여기에 코드를 작성하세요
 // TO-DO
 //- 여기에 코드를 작성하세요
+Worker.prototype.getHealth = function () {
+  return this._health;
+};
+Worker.prototype.work = function () {
+  this._health--;
+};
+
+JuniorEngineer.prototype = Object.create(Worker.prototype);
+JuniorEngineer.prototype._super = Worker;
+JuniorEngineer.prototype.getIntelligence = function () {
+  return this._intelligence;
+};
+JuniorEngineer.prototype.work = function () {
+  this._super.prototype.work.call(this);
+  this._intelligence++;
+};
+JuniorEngineer.prototype.isBornGenius = function () {
+  return this._isBornGenius ?? false;
+};
 
 /**
  * ## 문제 A - 추가문제
